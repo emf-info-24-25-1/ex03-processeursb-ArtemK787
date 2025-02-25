@@ -1,5 +1,7 @@
 package processeur.services;
 
+import java.util.ResourceBundle.Control;
+
 import processeur.ctrl.Controller;
 import processeur.models.CPU;
 
@@ -17,25 +19,24 @@ public class ServiceCPU {
     /**
      * Constantes indiquant le nombre maximum de CPUs que peut contenir notre liste.
      */
-    // VOTRE CODE ICI...
+    public final int NBRE_CPU = 20;
 
     /**
      * Attribut contenant le tableau des CPUs.
      */
-    // VOTRE CODE ICI...
-
+    CPU[] cpus;
     /**
      * Attribut contenant la référence au contrôleur de l'application MVC
      * "Processeur".
      */
-    // VOTRE CODE ICI...
-
+    Controller refCtrl;
     /**
      * Constructeur de la classe ServiceCPU. Les attributs de la classe ServiceCPU
      * sont initialisés.
      */
     public ServiceCPU() {
-        // VOTRE CODE ICI...
+        refCtrl = null;
+        cpus = new CPU[NBRE_CPU];
     }
 
     /**
