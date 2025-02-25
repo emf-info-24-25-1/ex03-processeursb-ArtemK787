@@ -21,7 +21,7 @@ public class View {
      * Constructeur de notre ihm principale MVC de l'application "Processeur".
      */
     public View() {
-        this.refCtrl = null;
+        refCtrl = null;
     }
 
     /**
