@@ -98,7 +98,7 @@ public class Controller {
      *
      * @param refView référence à la vue de l'application MVC "Processeur"
      */
-    public void setRefView(View refView) {
+    public void setRefView( View refView ) {
         this.refView = refView;
     }
 
@@ -116,7 +116,7 @@ public class Controller {
      *
      * @param refServiceCPU référence au service CPU de l'application MVC "Processeur"
      */
-    public void setRefServiceCPU(ServiceCPU refServiceCPU) {
+    public void setRefServiceCPU( ServiceCPU refServiceCPU ) {
         this.refServiceCPU = refServiceCPU;
     }
 
