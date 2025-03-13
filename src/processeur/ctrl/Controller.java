@@ -1,5 +1,7 @@
 package processeur.ctrl;
 
+import java.rmi.server.ServerCloneException;
+
 import processeur.models.CPU;
 import processeur.services.ServiceCPU;
 import processeur.views.View;
@@ -18,19 +20,22 @@ public class Controller {
      /**
      * Référence à la vue MVC de notre application.
      */
-    // VOTRE CODE ICI...
+    // -View refView
+    private View refView;
 
     /**
      * Référence au service CPU de notre application.
      */
-    // VOTRE CODE ICI...
+    // -ServiceCPU refServiceCPU
+    private ServiceCPU refServiceCPU;
 
     /**
      * Constructeur de la classe Controller. Les attributs de la classe Controller sont initialisés à null.
      */
-    public Controller() {
-        // VOTRE CODE ICI...
-    }
+    public Controller(){
+        refServiceCPU = null;
+        refView = null;
+    };
 
     /**
      * Méthode permettant de démarrer le contrôleur et donc la logique du programme.
@@ -85,7 +90,7 @@ public class Controller {
      * @return la référence à la vue de l'application MVC "Processeur"
      */
     public View getRefView() {
-        // VOTRE CODE ICI...
+        return this.refView;
     }
 
     /**
@@ -93,8 +98,8 @@ public class Controller {
      *
      * @param refView référence à la vue de l'application MVC "Processeur"
      */
-    public void setRefView(View refView) {
-        // VOTRE CODE ICI...
+    public void setRefView( View refView ) {
+        this.refView = refView;
     }
 
     /**
@@ -103,7 +108,7 @@ public class Controller {
      * @return la référence au service CPU de l'application MVC "Processeur"
      */
     public ServiceCPU getRefServiceCPU() {
-        // VOTRE CODE ICI...
+        return this.refServiceCPU;
     }
 
     /**
@@ -111,8 +116,8 @@ public class Controller {
      *
      * @param refServiceCPU référence au service CPU de l'application MVC "Processeur"
      */
-    public void setRefServiceCPU(ServiceCPU refServiceCPU) {
-        // VOTRE CODE ICI...
+    public void setRefServiceCPU( ServiceCPU refServiceCPU ) {
+        this.refServiceCPU = refServiceCPU;
     }
 
 }

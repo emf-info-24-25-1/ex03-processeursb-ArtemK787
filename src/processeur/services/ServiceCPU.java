@@ -1,5 +1,7 @@
 package processeur.services;
 
+import java.util.ResourceBundle.Control;
+
 import processeur.ctrl.Controller;
 import processeur.models.CPU;
 
@@ -17,25 +19,25 @@ public class ServiceCPU {
     /**
      * Constantes indiquant le nombre maximum de CPUs que peut contenir notre liste.
      */
-    // VOTRE CODE ICI...
+    public final int NBRE_CPU = 20;
 
     /**
      * Attribut contenant le tableau des CPUs.
      */
-    // VOTRE CODE ICI...
-
+    CPU[] cpus;
     /**
      * Attribut contenant la référence au contrôleur de l'application MVC
      * "Processeur".
      */
-    // VOTRE CODE ICI...
+    Controller refCtrl;
 
     /**
      * Constructeur de la classe ServiceCPU. Les attributs de la classe ServiceCPU
      * sont initialisés.
      */
     public ServiceCPU() {
-        // VOTRE CODE ICI...
+        refCtrl = null;
+        cpus = new CPU[ NBRE_CPU ];
     }
 
     /**
@@ -47,8 +49,16 @@ public class ServiceCPU {
      * @param cpu le nouveau CPU à stocker dans notre liste
      * @return vrai si une place libre a été trouvée dans notre liste de cpus
      */
-    public boolean ajouterUnNouveau(CPU cpu) {
-        // VOTRE CODE ICI...
+    public boolean ajouterUnNouveau( CPU cpu ) {
+        boolean cpuTrouve = false;
+        for ( int i = 0; i < cpus.length; i++ ) {
+            if ( cpus[ i ] == null ) {
+                cpus[ i ] = cpu;
+                cpuTrouve = true;
+                break;
+            }
+        }
+        return cpuTrouve;
     }
 
     /**
@@ -57,7 +67,30 @@ public class ServiceCPU {
      * @return la liste des CPUs
      */
     public CPU[] obtenirLaListe() {
-        // VOTRE CODE ICI...
+        int compte = 0;
+        for ( int i = 0; i < cpus.length; i++ ) {
+            if ( cpus[ i ] != null ) {
+                compte++;
+            }
+        }
+        /*
+         * créer un nouveau liste des CPUs non NULL. Les CPUs vérifiés se trouvent dans
+         * le tableau 'noveauListeCPU' qui est de la taille 'compte' contenant des CPUs
+         * validés par la méthode 'obtenirLaliste()'
+         */
+        CPU[] nouveauListeCPU = new CPU[ compte ];
+
+        /*
+         * remplir le tableau des CPU
+         */
+        int indexCPU = 0;
+        for ( int i = 0; i < nouveauListeCPU.length; i++ ) {
+            if ( cpus[ i ] != null ) {
+                nouveauListeCPU[ indexCPU ] = cpus[ i ];
+                indexCPU++;
+            }
+        }
+        return nouveauListeCPU;
     }
 
     /**
@@ -67,7 +100,13 @@ public class ServiceCPU {
      * @return le nombre de CPUs contenus dans notre liste
      */
     public int nombreDeCPUDansLaListe() {
-        // VOTRE CODE ICI...
+        int compteur = 0;
+        for (int i = 0; i < cpus.length; i++) {
+            if ( cpus[ i ] != null ) {
+                compteur++;
+            }
+        }
+        return compteur;
     }
 
     /**
@@ -78,7 +117,7 @@ public class ServiceCPU {
      * @return la taille de la liste de CPU
      */
     public int tailleDeLaListe() {
-        // VOTRE CODE ICI...
+        return cpus.length;
     }
 
     /**
@@ -89,8 +128,14 @@ public class ServiceCPU {
      * @return CPU le CPU demandé ou null si l'indice ne se trouve pas dans les
      *         limites du tableau
      */
-    public CPU obtenirUnElement(int indice) {
-        // VOTRE CODE ICI...
+    public CPU obtenirUnElement( int indice ) {
+        CPU indiceCPU = null;
+
+        if ( indice >= 0 && indice < cpus.length ) {
+            indiceCPU = cpus[ indice ];
+        }
+        return indiceCPU;
+
     }
 
     /**
@@ -99,7 +144,7 @@ public class ServiceCPU {
      * @return la référence au contrôleur de l'application MVC "Processeur"
      */
     public Controller getRefCtrl() {
-        // VOTRE CODE ICI...
+        return refCtrl;
     }
 
     /**
@@ -107,8 +152,8 @@ public class ServiceCPU {
      *
      * @param refCtrl référence au contrôleur de l'application MVC "Processeur"
      */
-    public void setRefCtrl(Controller refCtrl) {
-        // VOTRE CODE ICI...
+    public void setRefCtrl( Controller refCtrl ) {
+        this.refCtrl = refCtrl;
     }
 
 }
